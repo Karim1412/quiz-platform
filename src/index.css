@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&family=Nunito:wght@400;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ───────────────────────────────────────────────────────────────── */
+@layer base {
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: linear-gradient(135deg, #f0f7ff 0%, #f0fdfa 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  body.mode-student {
+    background: linear-gradient(160deg, #FFF9DB 0%, #E8F7FD 40%, #E6FFF6 100%);
+    background-attachment: fixed;
+  }
+}
+
+/* ── Teacher components ─────────────────────────────────────────────────── */
+@layer components {
+
+  /* Buttons */
+  .t-btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-xl
+           bg-teacher-600 text-white font-semibold text-sm
+           shadow-card hover:bg-teacher-700 active:bg-teacher-800
+           transition-all duration-200
+           disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .t-btn-secondary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-xl
+           border-2 border-teacher-200 bg-white text-teacher-700 font-semibold text-sm
+           hover:border-teacher-400 hover:bg-teacher-50
+           transition-all duration-200
+           disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .t-btn-ghost {
+    @apply inline-flex items-center gap-2 px-3 py-2 rounded-lg
+           text-slate-500 font-medium text-sm
+           hover:bg-slate-100 hover:text-slate-800
+           transition-all duration-150;
+  }
+
+  /* Cards */
+  .t-card {
+    @apply bg-white rounded-2xl shadow-card border border-slate-100;
+  }
+
+  /* Form elements */
+  .t-input {
+    @apply w-full px-4 py-3 rounded-xl border border-slate-200 bg-white
+           text-slate-900 placeholder-slate-400 text-sm
+           focus:outline-none focus:ring-2 focus:ring-teacher-500/30 focus:border-teacher-500
+           transition-all duration-150;
+  }
+
+  .t-label {
+    @apply block text-sm font-semibold text-slate-700 mb-1.5;
+  }
+
+  .t-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+
+  /* Student cards */
+  .s-card {
+    @apply bg-white rounded-3xl shadow-card-lg border-2 border-white;
+  }
+
+  .s-badge {
+    @apply inline-flex items-center px-4 py-1.5 rounded-full text-sm font-bold;
+    font-family: 'Nunito', system-ui, sans-serif;
+  }
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 6px; height: 6px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { border-radius: 9999px; background: #cbd5e1; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* ── File input reset ───────────────────────────────────────────────────── */
+input[type="file"] { display: none; }
+
+/* ── Progress bar ───────────────────────────────────────────────────────── */
+.progress-bar {
+  height: 12px;
+  border-radius: 9999px;
+  background: #e2e8f0;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #06D6A0, #4CC9F0);
+  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── Keyframe animations ────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes wiggle {
+  0%,100% { transform: rotate(0deg); }
+  25%     { transform: rotate(-6deg); }
+  75%     { transform: rotate(6deg); }
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-8px); }
+}
+
+@keyframes pulseSoft {
+  0%,100% { opacity: 1; }
+  50%     { opacity: 0.5; }
+}
+
+@keyframes starPop {
+  from { opacity: 0; transform: scale(0) rotate(-20deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+@keyframes progress {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+
+/* ── Animation utility classes ──────────────────────────────────────────── */
+.animate-fade-in    { animation: fadeIn    0.35s ease-out; }
+.animate-slide-up   { animation: slideUp   0.4s  cubic-bezier(0.16, 1, 0.3, 1); }
+.animate-bounce-in  { animation: bounceIn  0.5s  cubic-bezier(0.34, 1.56, 0.64, 1); }
+.animate-wiggle     { animation: wiggle    0.5s  ease-in-out; }
+.animate-float      { animation: float     3s    ease-in-out infinite; }
+.animate-pulse-soft { animation: pulseSoft 2s    ease-in-out infinite; }
+.animate-star-pop   { animation: starPop   0.4s  cubic-bezier(0.34, 1.56, 0.64, 1); }
